@@ -24,7 +24,7 @@ app.use(myconnection(mysql, {
   user: 'root',
   password: '',
   port: 3306,
-  database: 'crudnodejs'
+  database: 'crudcontactos'
 }, 'single'));
 
 app.listen(app.get('port'), () => {

@@ -1,6 +1,6 @@
 function index(req, res) {
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM tasks', (err, tasks) => {
+    conn.query('SELECT * FROM contactos', (err, tasks) => {
       if(err) {
         res.json(err);
       }
@@ -18,7 +18,7 @@ function store(req, res) {
   const data = req.body;
 
   req.getConnection((err, conn) => {
-    conn.query('INSERT INTO tasks SET ?', [data], (err, rows) => {
+    conn.query('INSERT INTO contactos SET ?', [data], (err, rows) => {
       res.redirect('/tasks');
     });
   });
@@ -28,7 +28,7 @@ function destroy(req, res) {
   const id = req.body.id;
 
   req.getConnection((err, conn) => {
-    conn.query('DELETE FROM tasks WHERE id = ?', [id], (err, rows) => {
+    conn.query('DELETE FROM contactos WHERE id = ?', [id], (err, rows) => {
       res.redirect('/tasks');
     });
   })
@@ -38,7 +38,7 @@ function edit(req, res) {
   const id = req.params.id;
 
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM tasks WHERE id = ?', [id], (err, tasks) => {
+    conn.query('SELECT * FROM contactos WHERE id = ?', [id], (err, tasks) => {
       if(err) {
         res.json(err);
       }
@@ -52,7 +52,7 @@ function update(req, res) {
   const data = req.body;
 
   req.getConnection((err, conn) => {
-    conn.query('UPDATE tasks SET ? WHERE id = ?', [data, id], (err, rows) => {
+    conn.query('UPDATE contactos SET ? WHERE id = ?', [data, id], (err, rows) => {
       res.redirect('/tasks');
     });
   });
